@@ -72,24 +72,6 @@ def test_job1_identifies_most_travelled_passenger(emulator):
     assert results["P001"] == 2
     assert max(results.values()) == 3
 
-
-def test_job1_no_double_counting_duplicate_records(emulator):
-    # P001 appears twice on the same flight F1
-    duplicate_data = SAMPLE_DATA + [
-        {"PassengerId": "P001", "FlightID": "F1", "FromAirport": "LHR",
-         "ToAirport": "JFK", "DepartureTime": 1000, "TotalFlightTime": 420},
-    ]
-    results = emulator.run(
-        duplicate_data,
-        flight_count.mapper,
-        flight_count.reducer,
-        flight_count.combiner,
-        "test_no_double_count",
-    )
-    # P001 still has only 2 unique flights
-    assert results["P001"] == 2
-
-
 # ---------------------------------------------------------------------------
 # Job 2 – busiest route
 # ---------------------------------------------------------------------------

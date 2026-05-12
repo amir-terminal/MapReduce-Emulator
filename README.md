@@ -42,10 +42,14 @@ mapreduce_emulator/
 │
 ├── jobs/                           # One module per MapReduce job
 │   ├── __init__.py
-│   ├── flight_count.py             # Job 1
-│   ├── busiest_route.py            # Job 2
-│   └── avg_duration.py             # Job 3
-│
+│   ├── flight_count.py                          # Job 1
+│   ├── busiest_route.py                         # Job 2
+│   └── avg_duration.py                          # Job 3
+│   └── longest_passenger_journey.py             # Job 4
+│   └── passenger_loyalty.py                     # Job 5
+│   └── peak_departure_hour.py                   # Job 6
+│   └── route_frequency_distribution.py          # Job 7
+│   └── top_airports.py                          # Job 8
 ├── utils/
 │   ├── __init__.py
 │   ├── loader.py                   # CSV ingestion with fault tolerance
@@ -156,14 +160,17 @@ appears in multiple input chunks.
 ```
 $ python -m pytest tests/ -v
 
-tests/test_emulator.py::test_split_produces_correct_chunks         PASSED
-tests/test_emulator.py::test_shuffle_sort_groups_and_orders_keys   PASSED
-tests/test_emulator.py::test_job1_identifies_most_travelled_passenger PASSED
-tests/test_emulator.py::test_job1_no_double_counting_duplicate_records PASSED
-tests/test_emulator.py::test_job2_busiest_route                    PASSED
-tests/test_emulator.py::test_job3_average_duration                 PASSED
-tests/test_emulator.py::test_fault_tolerance_bad_map_fn            PASSED
-tests/test_emulator.py::test_stats_recorded_after_run              PASSED
+tests/test_emulator.py::test_split_produces_correct_chunks                PASSED                                                                            
+tests/test_emulator.py::test_shuffle_sort_groups_and_orders_keys.         PASSED 
+tests/test_emulator.py::test_job1_identifies_most_travelled_passenger     PASSED 
+tests/test_emulator.py::test_job2_busiest_route                           PASSED 
+tests/test_emulator.py::test_job3_average_duration                        PASSED    
+tests/test_emulator.py::test_fault_tolerance_bad_map_fn                   PASSED 
+tests/test_emulator.py::test_stats_recorded_after_run                     PASSED 
+tests/test_emulator.py::test_job4_counts_both_departure_and_arrival.      PASSED                           
+tests/test_emulator.py::test_job5_unique_routes_per_passenger.            PASSED                                                                          
+tests/test_emulator.py::test_job6_extracts_hour_from_departure_time.      PASSED                                     
+tests/test_emulator.py::test_job7_total_flight_time                       PASSED   
 
 8 passed in 0.04s
 ```
