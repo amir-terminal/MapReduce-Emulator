@@ -18,6 +18,11 @@ analysis jobs in sequence:
 | **Job 1** | Which passenger(s) flew the most unique flights? |
 | **Job 2** | What are the top 10 busiest routes by passenger count? |
 | **Job 3** | Which routes have the longest average flight duration? |
+| **Job 4** | Which airports handle the highest total traffic?       |
+| **Job 5** | Which passenger(s) flew the most unique routes?        |
+| **Job 6** | Which hour of the day has the most flight departures?  |
+| **Job 7** | Which passenger(s) spent the most cumulative time in the air? |
+| **Job 8** | What is the frequency distribution of passenger counts per route? |
 
 Each job goes through the full MapReduce pipeline:
 **Split → Map → Combine → Shuffle/Sort → Reduce**
